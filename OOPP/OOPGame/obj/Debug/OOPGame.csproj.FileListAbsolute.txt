@@ -1,0 +1,31 @@
+C:\Users\AndreyPod\Documents\Visual Studio 2015\Projects\OOPGame\OOPGame\bin\Debug\pacman.png
+C:\Users\AndreyPod\Documents\Visual Studio 2015\Projects\OOPGame\OOPGame\bin\Debug\OOPGame.exe
+C:\Users\AndreyPod\Documents\Visual Studio 2015\Projects\OOPGame\OOPGame\bin\Debug\OOPGame.pdb
+C:\Users\AndreyPod\Documents\Visual Studio 2015\Projects\OOPGame\OOPGame\bin\Debug\ConsoleGraphics.cs.dll
+C:\Users\AndreyPod\Documents\Visual Studio 2015\Projects\OOPGame\OOPGame\bin\Debug\ConsoleGraphics.cs.pdb
+C:\Users\AndreyPod\Documents\Visual Studio 2015\Projects\OOPGame\OOPGame\obj\Debug\OOPGame.csprojResolveAssemblyReference.cache
+C:\Users\AndreyPod\Documents\Visual Studio 2015\Projects\OOPGame\OOPGame\obj\Debug\OOPGame.exe
+C:\Users\AndreyPod\Documents\Visual Studio 2015\Projects\OOPGame\OOPGame\obj\Debug\OOPGame.pdb
+C:\Users\Игорюха\Desktop\C#\Projekt\OOPGame-master Andrej\OOPGame-master\OOPGame\OOPGame\bin\Debug\pacman.png
+C:\Users\Игорюха\Desktop\C#\Projekt\OOPGame-master Andrej\OOPGame-master\OOPGame\OOPGame\bin\Debug\OOPGame.exe
+C:\Users\Игорюха\Desktop\C#\Projekt\OOPGame-master Andrej\OOPGame-master\OOPGame\OOPGame\bin\Debug\OOPGame.pdb
+C:\Users\Игорюха\Desktop\C#\Projekt\OOPGame-master Andrej\OOPGame-master\OOPGame\OOPGame\bin\Debug\ConsoleGraphics.cs.dll
+C:\Users\Игорюха\Desktop\C#\Projekt\OOPGame-master Andrej\OOPGame-master\OOPGame\OOPGame\bin\Debug\ConsoleGraphics.cs.pdb
+C:\Users\Игорюха\Desktop\C#\Projekt\OOPGame-master Andrej\OOPGame-master\OOPGame\OOPGame\obj\Debug\OOPGame.csprojResolveAssemblyReference.cache
+C:\Users\Игорюха\Desktop\C#\Projekt\OOPGame-master Andrej\OOPGame-master\OOPGame\OOPGame\obj\Debug\OOPGame.exe
+C:\Users\Игорюха\Desktop\C#\Projekt\OOPGame-master Andrej\OOPGame-master\OOPGame\OOPGame\obj\Debug\OOPGame.pdb
+C:\Users\Игорюха\Desktop\C#\Projekt\SnakeSimple\OOPGame-master\OOPGame\OOPGame\bin\Debug\pacman.png
+C:\Users\Игорюха\Desktop\C#\Projekt\SnakeSimple\OOPGame-master\OOPGame\OOPGame\bin\Debug\OOPGame.exe
+C:\Users\Игорюха\Desktop\C#\Projekt\SnakeSimple\OOPGame-master\OOPGame\OOPGame\bin\Debug\OOPGame.pdb
+C:\Users\Игорюха\Desktop\C#\Projekt\SnakeSimple\OOPGame-master\OOPGame\OOPGame\bin\Debug\ConsoleGraphics.cs.dll
+C:\Users\Игорюха\Desktop\C#\Projekt\SnakeSimple\OOPGame-master\OOPGame\OOPGame\bin\Debug\ConsoleGraphics.cs.pdb
+C:\Users\Игорюха\Desktop\C#\Projekt\SnakeSimple\OOPGame-master\OOPGame\OOPGame\obj\Debug\OOPGame.csprojResolveAssemblyReference.cache
+C:\Users\Игорюха\Desktop\C#\Projekt\SnakeSimple\OOPGame-master\OOPGame\OOPGame\obj\Debug\OOPGame.exe
+C:\Users\Игорюха\Desktop\C#\Projekt\SnakeSimple\OOPGame-master\OOPGame\OOPGame\obj\Debug\OOPGame.pdb
+C:\Users\Игорюха\Desktop\SnakeSimple\OOPGame-master\OOPGame\OOPGame\obj\Debug\OOPGame.csprojResolveAssemblyReference.cache
+C:\Users\Игорюха\Desktop\SnakeSimple\OOPGame-master\OOPGame\OOPGame\obj\Debug\OOPGame.exe
+C:\Users\Игорюха\Desktop\SnakeSimple\OOPGame-master\OOPGame\OOPGame\obj\Debug\OOPGame.pdb
+C:\Users\Игорюха\Desktop\SnakeSimple\OOPGame-master\OOPGame\OOPGame\bin\Debug\OOPGame.exe
+C:\Users\Игорюха\Desktop\SnakeSimple\OOPGame-master\OOPGame\OOPGame\bin\Debug\OOPGame.pdb
+C:\Users\Игорюха\Desktop\SnakeSimple\OOPGame-master\OOPGame\OOPGame\bin\Debug\ConsoleGraphics.cs.dll
+C:\Users\Игорюха\Desktop\SnakeSimple\OOPGame-master\OOPGame\OOPGame\bin\Debug\ConsoleGraphics.cs.pdb
