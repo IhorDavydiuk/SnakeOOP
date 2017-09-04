@@ -14,11 +14,12 @@ namespace OOPGame
         {
             Hurdle.LoadImage(graphics);
             PartOfBody.LoadImage(graphics);
-            AddObject(new Head(graphics, 10, 10, r));
+            Head head = new Head(graphics, 10, 10, r);
+            AddObject(head);
             for (int i = 0; i < 12; i++)
             {
-                if (i < 3) AddObject(new Apple(graphics, r, DataXYHead));
-                AddObject(new Stone(graphics, r, DataXYHead));
+                if (i < 3) AddObject(new Apple(graphics, r, head.GetXY));
+                AddObject(new Stone( r, head.GetXY));
             }
         }
     }

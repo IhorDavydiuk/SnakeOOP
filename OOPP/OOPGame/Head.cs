@@ -8,72 +8,84 @@ using NConsoleGraphics;
 
 namespace OOPGame
 {
-   public class Head : PartOfBody 
+    public class Head : PartOfBody
     {
-        int ClientHeight, ClientWidth;
-        public Head(ConsoleGraphics graphics,int width,int height, Random r) : base (graphics)
+        Random r;
+        ConsoleGraphics graphics;
+        bool secondPartIsTurn = true;
+        public Head(ConsoleGraphics graphics, int width, int height, Random r) : base(width, height)
         {
-            this.height = height;
-            this.width = width;
-            startDir(r.Next(0,2), r.Next(0,2));
-            p1.x = r.Next(0, 460);
-            p1.y = r.Next(0, 370);
-            ClientHeight = graphics.ClientHeight;
-            ClientWidth = graphics.ClientWidth;
+            this.r = r;
+            this.graphics = graphics;
+            startDir(r.Next(0, 2), r.Next(0, 2));
+            p1 = new Point(r.Next(0, 460), r.Next(0, 370));
         }
-        void startDir(int movOX,int moveOY)
+        public Point GetXY()
+        {
+            return p1;
+        }
+        void startDir(int movOX, int moveOY)
         {
             if (movOX == 1 && moveOY == 1)
             {
-                dir.Y = DirY.Note;
-                dir.X = DirX.Right;
+                dir = new Direction(DirX.Right, DirY.Note);
             }
             else if (movOX == 1 && moveOY == 0)
             {
-                dir.Y = DirY.Note;
-                dir.X = DirX.Left;
+                dir = new Direction(DirX.Left, DirY.Note);
             }
             else if (movOX == 0 && moveOY == 1)
             {
-                dir.Y = DirY.Down;
-                dir.X = DirX.Note;
+                dir = new Direction(DirX.Note, DirY.Down);
             }
             else if (movOX == 0 && moveOY == 0)
             {
-                dir.Y = DirY.Up;
-                dir.X = DirX.Note;
+                dir = new Direction(DirX.Note, DirY.Up);
             }
         }
-        bool uslov;
-        public override void Render(ConsoleGraphics graphics)
+        void turnHead()
         {
-            graphics.DrawImage(images[0],p1.x,p1.y);
-        }
-        public override void Update(GameEngine engine)
-        {
-            uslov = engine.GetCountObj();
-            bool we = uslov? dir.X == engine.DataDirSecondary().X : true;
-            bool re = uslov ? dir.Y == engine.DataDirSecondary().Y : true;
-            if (Input.IsKeyDown(Keys.LEFT) && dir.X != DirX.Right && we)
+            if (Input.IsKeyDown(Keys.LEFT) && dir.X != DirX.Right && secondPartIsTurn)
             {
                 dir.X = DirX.Left;
                 dir.Y = DirY.Note;
             }
-            else if (Input.IsKeyDown(Keys.RIGHT) && dir.X != DirX.Left && we)
+            else if (Input.IsKeyDown(Keys.RIGHT) && dir.X != DirX.Left && secondPartIsTurn)
             {
                 dir.X = DirX.Right;
                 dir.Y = DirY.Note;
             }
-            else if (Input.IsKeyDown(Keys.UP) && dir.Y != DirY.Down && re)
+            else if (Input.IsKeyDown(Keys.UP) && dir.Y != DirY.Down && secondPartIsTurn)
             {
                 dir.X = DirX.Note;
                 dir.Y = DirY.Up;
             }
-            else if (Input.IsKeyDown(Keys.DOWN) && dir.Y != DirY.Up && re)
+            else if (Input.IsKeyDown(Keys.DOWN) && dir.Y != DirY.Up && secondPartIsTurn)
             {
                 dir.X = DirX.Note;
                 dir.Y = DirY.Down;
             }
+        }
+        bool headIsOne(int numberPart)
+        {
+            return numberPart != 1;
+        }
+        public override void Render(ConsoleGraphics graphics)
+        {
+            graphics.DrawImage(images[0], p1.x, p1.y);
+        }
+        public override void Update(GameEngine engine)
+        {
+            if (Apple.IsEaten)
+            {
+                engine.AddObject(new Body(engine.GetObjects().Last().p1, engine.GetObjects().Last().dir, 12, 12, 20, r) { xyHead = GetXY });
+                Apple.IsEaten = false;
+            }
+            if (headIsOne(engine.GetObjects().Count()))
+            {
+                secondPartIsTurn = dir.Equals(engine.GetObjects().Skip(1).Take(1).Single().dir);
+            }
+            turnHead();
             p1.x += speed * (int)dir.X;
             p1.y += speed * (int)dir.Y;
         }

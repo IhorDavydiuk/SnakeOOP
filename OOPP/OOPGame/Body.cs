@@ -8,54 +8,39 @@ using NConsoleGraphics;
 
 namespace OOPGame
 {
-    
     public class Body : PartOfBody
     {
-        
-        Func<Point> PrevXY;
-        Func<Direction> PrevDir;
         int turnX, turnY;
         DirX courseX;
         DirY courseY;
         public Func<Point> xyHead { get; set; }
-
-        
-        public Body(ConsoleGraphics graphics, Func<Point> PrevXY, Func<Direction> PrevDir, int width, int height, int shag, Random r) : base(graphics)
+        public Body(Point PrevXY, Direction PrevDir, int width, int height, int shag, Random r) : base(width,height)
         {
             image = images[r.Next(1,10)];
-            this.height = height;
-            this.width = width;
-            this.PrevXY = PrevXY;
-            this.PrevDir = PrevDir;
-            if (PrevDir().Y == DirY.Down)
+            if (PrevDir.Y == DirY.Down)
             {
-                p1.x = PrevXY().x;
-                p1.y = PrevXY().y - shag;
+                p1 = new Point(PrevXY.x, PrevXY.y - shag);
             }
-            else if (PrevDir().Y == DirY.Up)
+            else if (PrevDir.Y == DirY.Up)
             {
-                p1.x = PrevXY().x;
-                p1.y = PrevXY().y + shag;
+                p1 = new Point(PrevXY.x, PrevXY.y + shag);
             }
-            else if (PrevDir().X == DirX.Left)
+            else if (PrevDir.X == DirX.Left)
             {
-                p1.x = PrevXY().x + shag;
-                p1.y = PrevXY().y;
+                p1 = new Point(PrevXY.x + shag, PrevXY.y);
             }
-            else if (PrevDir().X == DirX.Right)
+            else if (PrevDir.X == DirX.Right)
             {
-                p1.x = PrevXY().x - shag;
-                p1.y = PrevXY().y;
+                p1 = new Point(PrevXY.x - shag, PrevXY.y);
             }
-            dir.Y = PrevDir().Y;
-            dir.X = PrevDir().X;
+            dir = new Direction(PrevDir.X, PrevDir.Y);
         }
-        void setData()
+        void setData(Point lastPartXY,Direction lastPartDir)
         {
-            turnX = PrevXY().x;
-            turnY = PrevXY().y;
-            courseX = PrevDir().X;
-            courseY = PrevDir().Y;
+            turnX = lastPartXY.x;
+            turnY = lastPartXY.y;
+            courseX = lastPartDir.X;
+            courseY = lastPartDir.Y;
         }
         void control()
         {
@@ -84,11 +69,17 @@ namespace OOPGame
         {
             graphics.DrawImage(image, p1.x, p1.y);
         }
+        bool changeDir(IEnumerable<PartOfBody> lastPart)
+        {
+            if (lastPart.TakeWhile(q=>q != this).Last().dir.X != dir.X) return true;
+            else if (lastPart.TakeWhile(q => q != this).Last().dir.Y != dir.Y) return true;
+            else return false;
+        }
         public override void Update(GameEngine engine)
         {
-            if (engine.ChangeCourse(engine.numPartOfBody))
+            if (changeDir(engine.GetObjects()))
             {
-                setData();
+                setData(engine.GetObjects().TakeWhile(q => q != this).Last().p1, engine.GetObjects().TakeWhile(q => q != this).Last().dir);
             }
             if (AuxilClass.HeadOnHurdle(xyHead, p1, width, height)) engine.end = true;
             control();

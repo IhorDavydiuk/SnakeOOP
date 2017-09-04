@@ -25,6 +25,15 @@ namespace OOPGame
             this.X = x;
             this.Y = y;
         }
+        public override bool Equals(object obj)
+        {
+            if (obj is Direction)
+            {
+                if (((Direction)obj).X == X && ((Direction)obj).Y == Y) return true;
+                else return false;
+            }
+            else return false;
+        }
     }
     public enum DirY
     {

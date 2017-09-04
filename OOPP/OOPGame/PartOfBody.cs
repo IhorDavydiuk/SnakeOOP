@@ -14,9 +14,11 @@ namespace OOPGame
         public Point p1;
         public Direction dir;
         protected int width, height;
-        public static int speed = 1;
-        public PartOfBody(ConsoleGraphics graphics)
+        protected static int speed = 1;
+        public PartOfBody(int width, int height)
         {
+            this.height = height;
+            this.width = width;
         }
         public virtual void Render(ConsoleGraphics graphics)
         {

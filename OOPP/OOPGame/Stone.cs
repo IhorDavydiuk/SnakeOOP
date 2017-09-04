@@ -9,10 +9,8 @@ namespace OOPGame
 {
     class Stone : Hurdle
     {
-        public Stone(ConsoleGraphics graphics,  Random r, Func<Point> xyHead) :base (30,20,r,xyHead)
+        public Stone(Random r, Func<Point> xyHead) :base (30,20,r,xyHead)
         {
-            int d = graphics.ClientHeight;
-            int z = graphics.ClientWidth;
         }
         public override void Render(ConsoleGraphics graphics)
         {
