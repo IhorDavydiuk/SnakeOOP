@@ -13,15 +13,14 @@ namespace OOPGame
         {
             int d = graphics.ClientHeight;
             int z = graphics.ClientWidth;
-            image = graphics.LoadImage("k2.png");
         }
         public override void Render(ConsoleGraphics graphics)
         {
-            graphics.DrawImage(image,p1.x,p1.y);
+            graphics.DrawImage(images[1],p1.x,p1.y);
         }
         public override void Update(GameEngine engine)
         {
-            if (AuxilClass.headOnHurdle(xyHead, p1, width, height))
+            if (AuxilClass.HeadOnHurdle(xyHead, p1, width, height))
             {
                 engine.end = true;
             }

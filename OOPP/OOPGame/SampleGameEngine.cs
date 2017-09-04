@@ -7,25 +7,19 @@ using System.Threading.Tasks;
 
 namespace OOPGame
 {
-    public class SampleGameEngine : GameEngine
+    public class SnakeGameEngine : GameEngine
     {
-        
-        public SampleGameEngine(ConsoleGraphics graphics)
+        public SnakeGameEngine(ConsoleGraphics graphics)
            : base(graphics)
         {
-            AddObject(new Head(graphics,10,10, r));
-            AddObject(new Apple(graphics,r, DataXYHead));
-            AddObject(new Apple(graphics, r, DataXYHead));
-            AddObject(new Apple(graphics,r,DataXYHead));
-
+            Hurdle.LoadImage(graphics);
+            PartOfBody.LoadImage(graphics);
+            AddObject(new Head(graphics, 10, 10, r));
             for (int i = 0; i < 12; i++)
             {
-            AddObject(new Stone(graphics,r, DataXYHead));
-
+                if (i < 3) AddObject(new Apple(graphics, r, DataXYHead));
+                AddObject(new Stone(graphics, r, DataXYHead));
             }
-           
-            
         }
     }
-    
 }

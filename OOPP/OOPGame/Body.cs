@@ -8,9 +8,10 @@ using NConsoleGraphics;
 
 namespace OOPGame
 {
+    
     public class Body : PartOfBody
     {
-        ConsoleImage[] images;
+        
         Func<Point> PrevXY;
         Func<Direction> PrevDir;
         int turnX, turnY;
@@ -18,21 +19,10 @@ namespace OOPGame
         DirY courseY;
         public Func<Point> xyHead { get; set; }
 
+        
         public Body(ConsoleGraphics graphics, Func<Point> PrevXY, Func<Direction> PrevDir, int width, int height, int shag, Random r) : base(graphics)
         {
-             images = new ConsoleImage[] {
-                graphics.LoadImage("3.png"),
-                graphics.LoadImage("4.png"),
-                graphics.LoadImage("5.png"),
-                graphics.LoadImage("6.png"),
-                graphics.LoadImage("7.png"),
-                graphics.LoadImage("8.png"),
-                graphics.LoadImage("9.png"),
-                graphics.LoadImage("10.png"),
-                graphics.LoadImage("11.png"),
-                graphics.LoadImage("12.png")
-            };
-            image = images[r.Next(0,10)];
+            image = images[r.Next(1,10)];
             this.height = height;
             this.width = width;
             this.PrevXY = PrevXY;
@@ -100,7 +90,7 @@ namespace OOPGame
             {
                 setData();
             }
-            if (AuxilClass.headOnHurdle(xyHead, p1, width, height)) engine.end = true;
+            if (AuxilClass.HeadOnHurdle(xyHead, p1, width, height)) engine.end = true;
             control();
             p1.x += speed * (int)dir.X;
             p1.y += speed * (int)dir.Y;

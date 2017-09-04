@@ -29,3 +29,10 @@ C:\Users\Игорюха\Desktop\SnakeSimple\OOPGame-master\OOPGame\OOPGame\bin\D
 C:\Users\Игорюха\Desktop\SnakeSimple\OOPGame-master\OOPGame\OOPGame\bin\Debug\OOPGame.pdb
 C:\Users\Игорюха\Desktop\SnakeSimple\OOPGame-master\OOPGame\OOPGame\bin\Debug\ConsoleGraphics.cs.dll
 C:\Users\Игорюха\Desktop\SnakeSimple\OOPGame-master\OOPGame\OOPGame\bin\Debug\ConsoleGraphics.cs.pdb
+C:\Users\Игорюха\Desktop\Snake\OOPP\OOPGame\bin\Debug\OOPGame.exe
+C:\Users\Игорюха\Desktop\Snake\OOPP\OOPGame\bin\Debug\OOPGame.pdb
+C:\Users\Игорюха\Desktop\Snake\OOPP\OOPGame\bin\Debug\ConsoleGraphics.cs.dll
+C:\Users\Игорюха\Desktop\Snake\OOPP\OOPGame\bin\Debug\ConsoleGraphics.cs.pdb
+C:\Users\Игорюха\Desktop\Snake\OOPP\OOPGame\obj\Debug\OOPGame.csprojResolveAssemblyReference.cache
+C:\Users\Игорюха\Desktop\Snake\OOPP\OOPGame\obj\Debug\OOPGame.exe
+C:\Users\Игорюха\Desktop\Snake\OOPP\OOPGame\obj\Debug\OOPGame.pdb

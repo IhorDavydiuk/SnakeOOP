@@ -10,11 +10,9 @@ namespace OOPGame
 {
    public class Head : PartOfBody 
     {
-
         int ClientHeight, ClientWidth;
         public Head(ConsoleGraphics graphics,int width,int height, Random r) : base (graphics)
         {
-            image = graphics.LoadImage("0.png");
             this.height = height;
             this.width = width;
             startDir(r.Next(0,2), r.Next(0,2));
@@ -46,15 +44,13 @@ namespace OOPGame
                 dir.X = DirX.Note;
             }
         }
-       
         bool uslov;
         public override void Render(ConsoleGraphics graphics)
         {
-            graphics.DrawImage(image,p1.x,p1.y);
+            graphics.DrawImage(images[0],p1.x,p1.y);
         }
         public override void Update(GameEngine engine)
         {
-            
             uslov = engine.GetCountObj();
             bool we = uslov? dir.X == engine.DataDirSecondary().X : true;
             bool re = uslov ? dir.Y == engine.DataDirSecondary().Y : true;

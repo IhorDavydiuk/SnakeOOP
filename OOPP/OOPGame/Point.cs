@@ -10,33 +10,27 @@ namespace OOPGame
     {
         public int x;
         public int y;
-
         public Point(int x, int y)
         {
             this.x = x;
             this.y = y;
         }
-
     }
-
     public struct Direction
     {
         public DirX X;
         public DirY Y;
-
         public Direction(DirX x, DirY y)
         {
             this.X = x;
             this.Y = y;
         }
     }
-
     public enum DirY
     {
         Up = -1,
         Down = 1,
         Note = 0
-
     }
     public enum DirX
     {
