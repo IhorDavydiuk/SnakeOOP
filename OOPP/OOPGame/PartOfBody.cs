@@ -7,40 +7,28 @@ using NConsoleGraphics;
 
 namespace OOPGame
 {
-    abstract public class PartOfBody : IGameObject
+    abstract public class PartOfBody 
     {
-        protected static ConsoleImage[] images;
+        protected int heighPlayingField, widthPlayingField;
         protected ConsoleImage image;
-        public Point p1;
-        public Direction dir;
+        protected abstract void checDirection();
+        protected Point p1;
+        public Direction Dir;
         protected int width, height;
-        protected static int speed = 1;
+        public static int Speed{ get;protected set; }
         public PartOfBody(int width, int height)
         {
             this.height = height;
             this.width = width;
         }
-        public virtual void Render(ConsoleGraphics graphics)
+        public Point GetP1
         {
+            get { return p1; }
         }
-        public virtual void Update(GameEngine engine)
+        protected void changeCoordinates()
         {
-        }
-        public static void LoadImage(ConsoleGraphics graphics)
-        {
-            images = new ConsoleImage[] {
-                graphics.LoadImage("0.png"),
-                graphics.LoadImage("3.png"),
-                graphics.LoadImage("4.png"),
-                graphics.LoadImage("5.png"),
-                graphics.LoadImage("6.png"),
-                graphics.LoadImage("7.png"),
-                graphics.LoadImage("8.png"),
-                graphics.LoadImage("9.png"),
-                graphics.LoadImage("10.png"),
-                graphics.LoadImage("11.png"),
-                graphics.LoadImage("12.png")
-            };
+           p1.X += Speed * (int)Dir.X;
+           p1.Y += Speed * (int)Dir.Y;
         }
     }
 }

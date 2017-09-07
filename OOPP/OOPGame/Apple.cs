@@ -7,29 +7,37 @@ using NConsoleGraphics;
 
 namespace OOPGame
 {
-    public class Apple : Hurdle
+    public class Apple : Hurdle,IGameObject
     {
+        int height, width;
+        static ConsoleImage image;
         Random r;
         ConsoleGraphics graphics;
         public static bool IsEaten { get; set; }
-        public Apple(ConsoleGraphics graphics,  Random r, Func<Point> xyHead) :base (15,15 ,r,xyHead)
+        public Apple(ConsoleGraphics graphics,  Random r, Head head,int weight,int height) :base (r,head)
         {
+            this.width = weight;
+            this.height = height;
             this.graphics = graphics;
             this.r = r;
         }
-        public override void Render(ConsoleGraphics graphics)
+        public void Render(ConsoleGraphics graphics)
         {
-            graphics.DrawImage(images[0],p1.x,p1.y);
+            graphics.DrawImage(image,p1.X,p1.Y);
         }
-        public override void Update(GameEngine engine)
+        public void Update(GameEngine engine)
         {
-            if (AuxilClass.HeadOnHurdle(xyHead, p1, width, height) && !headWasOnSquare)
+            if (AuxilClass.HeadOnHurdle(head, p1, width, height) && !headWasOnSquare)
             {
                 IsEaten = true;
-                engine.RemApple(this);
-                engine.AddObject(new Apple(graphics, r, xyHead));
+               ((SnakeGameEngine)engine).RemObject(this);
+                engine.AddObject(new Apple(graphics, r, head,15,15));
             }
-            headWasOnSquare = AuxilClass.HeadOnHurdle(xyHead, p1, width, height);
+            headWasOnSquare = AuxilClass.HeadOnHurdle(head, p1, width, height);
+        }
+        public static void Load(ConsoleGraphics graphics)
+        {
+            image = graphics.LoadImage("y2.png");
         }
     }
 }

@@ -8,86 +8,122 @@ using NConsoleGraphics;
 
 namespace OOPGame
 {
-    public class Head : PartOfBody
+    public class Head : PartOfBody, ILoadImages, IGameObject
     {
         Random r;
         ConsoleGraphics graphics;
         bool secondPartIsTurn = true;
         public Head(ConsoleGraphics graphics, int width, int height, Random r) : base(width, height)
         {
+            Speed = 1; 
             this.r = r;
             this.graphics = graphics;
             startDir(r.Next(0, 2), r.Next(0, 2));
             p1 = new Point(r.Next(0, 460), r.Next(0, 370));
-        }
-        public Point GetXY()
-        {
-            return p1;
+            heighPlayingField = graphics.ClientHeight;
+            widthPlayingField = graphics.ClientWidth;
         }
         void startDir(int movOX, int moveOY)
         {
             if (movOX == 1 && moveOY == 1)
             {
-                dir = new Direction(DirX.Right, DirY.Note);
+                Dir = new Direction(DirX.Right, DirY.Note);
             }
             else if (movOX == 1 && moveOY == 0)
             {
-                dir = new Direction(DirX.Left, DirY.Note);
+                Dir = new Direction(DirX.Left, DirY.Note);
             }
             else if (movOX == 0 && moveOY == 1)
             {
-                dir = new Direction(DirX.Note, DirY.Down);
+                Dir = new Direction(DirX.Note, DirY.Down);
             }
             else if (movOX == 0 && moveOY == 0)
             {
-                dir = new Direction(DirX.Note, DirY.Up);
+                Dir = new Direction(DirX.Note, DirY.Up);
             }
         }
-        void turnHead()
+        protected override void checDirection()
         {
-            if (Input.IsKeyDown(Keys.LEFT) && dir.X != DirX.Right && secondPartIsTurn)
+            if (Input.IsKeyDown(Keys.LEFT) && Dir.X != DirX.Right && secondPartIsTurn && p1.X != 0)
             {
-                dir.X = DirX.Left;
-                dir.Y = DirY.Note;
+                Dir.X = DirX.Left;
+                Dir.Y = DirY.Note;
             }
-            else if (Input.IsKeyDown(Keys.RIGHT) && dir.X != DirX.Left && secondPartIsTurn)
+            else if (Input.IsKeyDown(Keys.RIGHT) && Dir.X != DirX.Left && secondPartIsTurn && p1.X != widthPlayingField - 15)
             {
-                dir.X = DirX.Right;
-                dir.Y = DirY.Note;
+                Dir.X = DirX.Right;
+                Dir.Y = DirY.Note;
             }
-            else if (Input.IsKeyDown(Keys.UP) && dir.Y != DirY.Down && secondPartIsTurn)
+            else if (Input.IsKeyDown(Keys.UP) && Dir.Y != DirY.Down && secondPartIsTurn && p1.Y != 0)
             {
-                dir.X = DirX.Note;
-                dir.Y = DirY.Up;
+                Dir.X = DirX.Note;
+                Dir.Y = DirY.Up;
             }
-            else if (Input.IsKeyDown(Keys.DOWN) && dir.Y != DirY.Up && secondPartIsTurn)
+            else if (Input.IsKeyDown(Keys.DOWN) && Dir.Y != DirY.Up && secondPartIsTurn && p1.Y != heighPlayingField - 15)
             {
-                dir.X = DirX.Note;
-                dir.Y = DirY.Down;
+                Dir.X = DirX.Note;
+                Dir.Y = DirY.Down;
             }
         }
-        bool headIsOne(int numberPart)
+        bool headIsNotOne(int numberOfPart)
         {
-            return numberPart != 1;
+            return numberOfPart != 1;
         }
-        public override void Render(ConsoleGraphics graphics)
+        public void Render(ConsoleGraphics graphics)
         {
-            graphics.DrawImage(images[0], p1.x, p1.y);
+            graphics.DrawImage(image, p1.X, p1.Y);
         }
-        public override void Update(GameEngine engine)
+        protected void checDirectionn()
+        {
+            if (p1.Y == heighPlayingField  - 15 && Dir.Y== DirY.Down)
+            {
+                    Dir.X = DirX.Right;
+                    Dir.Y = DirY.Note;
+            }
+            
+            else if (p1.Y == 0 && Dir.Y == DirY.Up)
+            {
+                    Dir.X = DirX.Left;
+                    Dir.Y = DirY.Note;
+            }
+            else if (p1.X == 0 && Dir.X == DirX.Left)
+            {
+                Dir.X = DirX.Note;
+                Dir.Y = DirY.Down;
+            }
+            else if (p1.X == widthPlayingField-15 && Dir.X == DirX.Right)
+            {
+                    Dir.X = DirX.Note;
+                    Dir.Y = DirY.Up;
+            }
+        }
+        public void Update(GameEngine engine)
         {
             if (Apple.IsEaten)
             {
-                engine.AddObject(new Body(engine.GetObjects().Last().p1, engine.GetObjects().Last().dir, 12, 12, 20, r) { xyHead = GetXY });
+                engine.AddObject(new Body(((SnakeGameEngine)engine).GetObjects().Last().GetP1, ((SnakeGameEngine)engine).GetObjects().Last().Dir, 12, 12, 20, r) { head = (Head)((SnakeGameEngine)engine).GetObjects().First() });
                 Apple.IsEaten = false;
             }
-            if (headIsOne(engine.GetObjects().Count()))
+            if (headIsNotOne(((SnakeGameEngine)engine).GetObjects().Count()))
             {
-                secondPartIsTurn = dir.Equals(engine.GetObjects().Skip(1).Take(1).Single().dir);
+                secondPartIsTurn = Dir.Equals(((SnakeGameEngine)engine).GetObjects().Skip(1).Take(1).Single().Dir);
             }
-            turnHead();
-            p1.x += speed * (int)dir.X;
-            p1.y += speed * (int)dir.Y;
+            //if (headGoesOut())
+            //{
+            //    dir.Y = DirY.Down;
+            //    dir.X = DirX.Note;
+            //}
+            checDirectionn();
+            checDirection();
+            changeCoordinates();
+        }
+        public void Load(ConsoleGraphics graphics)
+        {
+            image = graphics.LoadImage("0.png");
+        }
+        public static void StopHead()
+        {
+            Speed = 0;
         }
     }
 }

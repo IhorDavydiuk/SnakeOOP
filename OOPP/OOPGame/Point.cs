@@ -8,12 +8,12 @@ namespace OOPGame
 {
     public struct Point
     {
-        public int x;
-        public int y;
+        public int X;
+        public int Y;
         public Point(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
         }
     }
     public struct Direction

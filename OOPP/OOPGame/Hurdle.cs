@@ -7,33 +7,29 @@ using NConsoleGraphics;
 
 namespace OOPGame
 {
-    abstract public class Hurdle : IGameObject
+    abstract public class Hurdle 
     {
-        protected static ConsoleImage[] images;
-        protected int width, height;
         protected Point p1;
-        protected Func<Point> xyHead;
+        protected Head head;
         protected bool headWasOnSquare;
-        public Hurdle(int weigh, int high, Random r, Func<Point> xyHead)
+        public Hurdle(Random r, Head head)
         {
-            this.width = weigh;
-            this.height = high;
-            this.xyHead = xyHead;
-            p1 = new Point(r.Next(1, 400), r.Next(1, 400));
-        }
-        public virtual void Render(ConsoleGraphics graphics)
-        {
-        }
-        public virtual void Update(GameEngine engine)
-        {
-        }
-        public static void LoadImage(ConsoleGraphics graphics)
-        {
-            images = new ConsoleImage[]
+            AuxilClass.PointsOfStones.Add(new Point(10, 10));
+            this.head = head;
+            bool appleOnTheStone = true;
+            do
             {
-                graphics.LoadImage("y2.png"),
-                graphics.LoadImage("k2.png")
-            };
+                int xr = r.Next(0, 400);
+                int yr = r.Next(0,400);
+                foreach (var item in AuxilClass.PointsOfStones)
+                {
+                    if (!(xr > item.X -30 && yr > item.Y -30 && xr < item.X + Stone.Width +100 && yr < item.Y + Stone.Height+100))
+                    {
+                        p1 = new Point(xr, yr);
+                        appleOnTheStone = false;
+                    }
+                }
+            } while (appleOnTheStone);
         }
     }
 }

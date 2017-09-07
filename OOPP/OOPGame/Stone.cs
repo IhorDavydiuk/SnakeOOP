@@ -7,20 +7,35 @@ using NConsoleGraphics;
 
 namespace OOPGame
 {
-    class Stone : Hurdle
+    class Stone : Hurdle , ILoadImages,IGameObject
     {
-        public Stone(Random r, Func<Point> xyHead) :base (30,20,r,xyHead)
+        static public int Height { get;private set; }
+        static public int Width { get;private set; }
+        static public bool EndGame { get; private set; }
+        ConsoleImage image;
+        public Stone(Random r, Head head,int Width,int Hight) :base (r,head)
         {
+            Height = Hight;
+            Stone.Width = Width;
+            AuxilClass.PointsOfStones.Add(p1);
         }
-        public override void Render(ConsoleGraphics graphics)
+        public void Load(ConsoleGraphics graphics)
         {
-            graphics.DrawImage(images[1],p1.x,p1.y);
+            image = graphics.LoadImage("k2.png");
         }
-        public override void Update(GameEngine engine)
+        public int ReturnWidthStone()
         {
-            if (AuxilClass.HeadOnHurdle(xyHead, p1, width, height))
+            return Width;
+        }
+        public void Render(ConsoleGraphics graphics)
+        {
+            graphics.DrawImage(image,p1.X,p1.Y);
+        }
+        public void Update(GameEngine engine)
+        {
+            if (AuxilClass.HeadOnHurdle(head, p1, Width, Height))
             {
-                engine.end = true;
+                Head.StopHead(); 
             }
         }
     }
