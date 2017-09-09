@@ -47,18 +47,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Head.cs" />
+    <Compile Include="InformPlayingField.cs" />
+    <Compile Include="Number.cs" />
     <Compile Include="PartOfBody.cs" />
     <Compile Include="Hurdle.cs" />
     <Compile Include="IGameObject.cs" />
+    <Compile Include="SnakeGameEngine.cs" />
     <Compile Include="Stone.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="GameEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleGameEngine.cs" />
     <Compile Include="Apple.cs" />
     <Compile Include="AuxilClass.cs" />
     <Compile Include="Body.cs" />
+    <Compile Include="TheEnd.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

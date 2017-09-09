@@ -7,7 +7,7 @@ using NConsoleGraphics;
 
 namespace OOPGame
 {
-    abstract public class PartOfBody 
+    abstract public class PartOfBody
     {
         protected int heighPlayingField, widthPlayingField;
         protected ConsoleImage image;
@@ -15,7 +15,7 @@ namespace OOPGame
         protected Point p1;
         public Direction Dir;
         protected int width, height;
-        public static int Speed{ get;protected set; }
+        public static int Speed { get; protected set; }
         public PartOfBody(int width, int height)
         {
             this.height = height;
@@ -27,8 +27,8 @@ namespace OOPGame
         }
         protected void changeCoordinates()
         {
-           p1.X += Speed * (int)Dir.X;
-           p1.Y += Speed * (int)Dir.Y;
+            p1.X += Speed * (int)Dir.X;
+            p1.Y += Speed * (int)Dir.Y;
         }
     }
 }

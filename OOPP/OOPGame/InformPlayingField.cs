@@ -11,15 +11,15 @@ namespace OOPGame
     {
         protected static int numberOfApplesEaten;
         protected ConsoleImage[] images = new ConsoleImage[10];
-        protected void renderNumber(ConsoleGraphics graphics,int x , int y,int distanceBetweenNumber)
+        protected void renderNumber(ConsoleGraphics graphics, int x, int y, int distanceBetweenNumber)
         {
             if (numberOfApplesEaten >= 10)
             {
                 int firstDischarge = numberOfApplesEaten / 10;
                 graphics.DrawImage(images[firstDischarge], x, y);
-                graphics.DrawImage(images[numberOfApplesEaten - 10 * firstDischarge], x+distanceBetweenNumber, y);
+                graphics.DrawImage(images[numberOfApplesEaten - 10 * firstDischarge], x + distanceBetweenNumber, y);
             }
-            else graphics.DrawImage(images[numberOfApplesEaten], x+distanceBetweenNumber, y);
+            else graphics.DrawImage(images[numberOfApplesEaten], x + distanceBetweenNumber, y);
         }
     }
 }

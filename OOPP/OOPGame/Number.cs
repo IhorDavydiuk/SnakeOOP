@@ -7,16 +7,16 @@ using NConsoleGraphics;
 
 namespace OOPGame
 {
-    class Number : InformPlayingField,IGameObject, ILoadImages
+    class Number : InformPlayingField, IGameObject, ILoadImages
     {
         int clientWidth;
         Point p1;
         public Head Head { get; set; }
         bool isLeftCorner;
-        public Number(ConsoleGraphics graphics,int x, int y)
+        public Number(ConsoleGraphics graphics, int x, int y)
         {
             isLeftCorner = true;
-           clientWidth = graphics.ClientWidth;
+            clientWidth = graphics.ClientWidth;
             p1.X = x;
             p1.Y = y;
         }
@@ -35,13 +35,13 @@ namespace OOPGame
         }
         public void Render(ConsoleGraphics graphics)
         {
-            renderNumber(graphics,p1.X,p1.Y,7);
+            renderNumber(graphics, p1.X, p1.Y, 7);
         }
         public void Update(GameEngine engine)
         {
             if (AuxilClass.HeadOnHurdle(Head, p1, 20, 15))
             {
-                p1.X = isLeftCorner ? clientWidth - p1.X -20 : p1.X;
+                p1.X = isLeftCorner ? clientWidth - p1.X - 20 : p1.X;
                 isLeftCorner = !isLeftCorner;
             }
             numberOfApplesEaten = ((SnakeGameEngine)engine).GetObjects().OfType<Body>().Count();

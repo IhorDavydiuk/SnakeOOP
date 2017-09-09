@@ -7,7 +7,7 @@ using NConsoleGraphics;
 
 namespace OOPGame
 {
-    abstract public class Hurdle 
+    abstract public class Hurdle
     {
         protected Point p1;
         protected Head head;
@@ -20,10 +20,10 @@ namespace OOPGame
             do
             {
                 int xr = r.Next(0, 400);
-                int yr = r.Next(0,400);
+                int yr = r.Next(0, 400);
                 foreach (var item in AuxilClass.PointsOfStones)
                 {
-                    if (!(xr > item.X -30 && yr > item.Y -30 && xr < item.X + Stone.Width +100 && yr < item.Y + Stone.Height+100))
+                    if (!(xr > item.X - 30 && yr > item.Y - 30 && xr < item.X + Stone.Width + 100 && yr < item.Y + Stone.Height + 100))
                     {
                         p1 = new Point(xr, yr);
                         appleOnTheStone = false;

@@ -15,7 +15,7 @@ namespace OOPGame
         bool secondPartIsTurn = true;
         public Head(ConsoleGraphics graphics, int width, int height, Random r) : base(width, height)
         {
-            Speed = 1; 
+            Speed = 1;
             this.r = r;
             this.graphics = graphics;
             startDir(r.Next(0, 2), r.Next(0, 2));
@@ -75,26 +75,26 @@ namespace OOPGame
         }
         protected void checDirectionn()
         {
-            if (p1.Y == heighPlayingField  - 15 && Dir.Y== DirY.Down)
+            if (p1.Y == heighPlayingField - 15 && Dir.Y == DirY.Down)
             {
-                    Dir.X = DirX.Right;
-                    Dir.Y = DirY.Note;
+                Dir.X = DirX.Right;
+                Dir.Y = DirY.Note;
             }
-            
+
             else if (p1.Y == 0 && Dir.Y == DirY.Up)
             {
-                    Dir.X = DirX.Left;
-                    Dir.Y = DirY.Note;
+                Dir.X = DirX.Left;
+                Dir.Y = DirY.Note;
             }
             else if (p1.X == 0 && Dir.X == DirX.Left)
             {
                 Dir.X = DirX.Note;
                 Dir.Y = DirY.Down;
             }
-            else if (p1.X == widthPlayingField-15 && Dir.X == DirX.Right)
+            else if (p1.X == widthPlayingField - 15 && Dir.X == DirX.Right)
             {
-                    Dir.X = DirX.Note;
-                    Dir.Y = DirY.Up;
+                Dir.X = DirX.Note;
+                Dir.Y = DirY.Up;
             }
         }
         public void Update(GameEngine engine)
@@ -108,11 +108,6 @@ namespace OOPGame
             {
                 secondPartIsTurn = Dir.Equals(((SnakeGameEngine)engine).GetObjects().Skip(1).Take(1).Single().Dir);
             }
-            //if (headGoesOut())
-            //{
-            //    dir.Y = DirY.Down;
-            //    dir.X = DirX.Note;
-            //}
             checDirectionn();
             checDirection();
             changeCoordinates();

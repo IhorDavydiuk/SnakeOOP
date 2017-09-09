@@ -8,7 +8,7 @@ using NConsoleGraphics;
 
 namespace OOPGame
 {
-    public class Body : PartOfBody,IGameObject
+    public class Body : PartOfBody, IGameObject
     {
         static public bool EndGame { get; private set; }
         static ConsoleImage[] images;
@@ -16,9 +16,9 @@ namespace OOPGame
         DirX courseX;
         DirY courseY;
         public Head head { get; set; }
-        public Body(Point PrevXY, Direction PrevDir, int width, int height, int shag, Random r) : base(width,height)
+        public Body(Point PrevXY, Direction PrevDir, int width, int height, int shag, Random r) : base(width, height)
         {
-            image = images[r.Next(1,10)];
+            image = images[r.Next(1, 10)];
             if (PrevDir.Y == DirY.Down)
             {
                 p1 = new Point(PrevXY.X, PrevXY.Y - shag);
@@ -37,7 +37,7 @@ namespace OOPGame
             }
             Dir = new Direction(PrevDir.X, PrevDir.Y);
         }
-        void setData(Point lastPartXY,Direction lastPartDir)
+        void setData(Point lastPartXY, Direction lastPartDir)
         {
             turnX = lastPartXY.X;
             turnY = lastPartXY.Y;
@@ -73,7 +73,7 @@ namespace OOPGame
         }
         bool changeDir(IEnumerable<PartOfBody> lastPart)
         {
-            if (lastPart.TakeWhile(q=>q != this).Last().Dir.X != Dir.X) return true;
+            if (lastPart.TakeWhile(q => q != this).Last().Dir.X != Dir.X) return true;
             else if (lastPart.TakeWhile(q => q != this).Last().Dir.Y != Dir.Y) return true;
             else return false;
         }

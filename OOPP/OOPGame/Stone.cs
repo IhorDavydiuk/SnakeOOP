@@ -7,13 +7,13 @@ using NConsoleGraphics;
 
 namespace OOPGame
 {
-    class Stone : Hurdle , ILoadImages,IGameObject
+    class Stone : Hurdle, ILoadImages, IGameObject
     {
-        static public int Height { get;private set; }
-        static public int Width { get;private set; }
+        static public int Height { get; private set; }
+        static public int Width { get; private set; }
         static public bool EndGame { get; private set; }
         ConsoleImage image;
-        public Stone(Random r, Head head,int Width,int Hight) :base (r,head)
+        public Stone(Random r, Head head, int Width, int Hight) : base(r, head)
         {
             Height = Hight;
             Stone.Width = Width;
@@ -29,13 +29,13 @@ namespace OOPGame
         }
         public void Render(ConsoleGraphics graphics)
         {
-            graphics.DrawImage(image,p1.X,p1.Y);
+            graphics.DrawImage(image, p1.X, p1.Y);
         }
         public void Update(GameEngine engine)
         {
             if (AuxilClass.HeadOnHurdle(head, p1, Width, Height))
             {
-                Head.StopHead(); 
+                Head.StopHead();
             }
         }
     }

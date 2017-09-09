@@ -17,8 +17,8 @@ namespace OOPGame
             AddObject(head);
             for (int i = 0; i < 12; i++)
             {
-                AddObject(new Stone(r, head,30,20));
-                if (i < 3) AddObject(new Apple(graphics, r, head,15,15));
+                AddObject(new Stone(r, head, 30, 20));
+                if (i < 3) AddObject(new Apple(graphics, r, head, 15, 15));
                 if (i == 11)
                 {
                     AddObject(new TheEnd());

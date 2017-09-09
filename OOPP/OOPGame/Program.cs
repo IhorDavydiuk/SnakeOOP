@@ -1,23 +1,26 @@
 ﻿using NConsoleGraphics;
 using System;
 
-namespace OOPGame {
-    
-  public class Program {
+namespace OOPGame
+{
 
-    static void Main(string[] args) {
+    public class Program
+    {
 
-      Console.WindowWidth = 60;
-      Console.WindowHeight = 33;
-      Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
-      Console.BackgroundColor = ConsoleColor.DarkGray;
-      Console.CursorVisible = false;
-      Console.Clear();
+        static void Main(string[] args)
+        {
 
-      ConsoleGraphics graphics = new ConsoleGraphics();
+            Console.WindowWidth = 60;
+            Console.WindowHeight = 33;
+            Console.SetBufferSize(Console.WindowWidth, Console.WindowHeight);
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.CursorVisible = false;
+            Console.Clear();
 
-      GameEngine engine = new SnakeGameEngine(graphics);
-      engine.Start();
+            ConsoleGraphics graphics = new ConsoleGraphics();
+
+            GameEngine engine = new SnakeGameEngine(graphics);
+            engine.Start();
+        }
     }
-  }
 }
